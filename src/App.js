@@ -1,4 +1,7 @@
-import {Link} from 'react-router-dom'
+import {Link, Outlet} from 'react-router-dom'
+
+// Nested routes
+// with routerv6, we have a 'Outlet' component that allows us to nest the UI components for shared layout when the child route matches:
 
 function App() {
   return (
@@ -11,12 +14,13 @@ function App() {
         }}
       >
         <Link to="/invoices">
-          Invoices
+          Invoices || { " "}
         </Link>
         <Link to="/expenses">
           Expenses
         </Link>
       </nav>
+      <Outlet />
     </div>
   );
 }
