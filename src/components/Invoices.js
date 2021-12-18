@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Invoices() {
   let invoices = getInvoices();
@@ -7,10 +7,10 @@ export default function Invoices() {
       <nav
         style={{
           borderRight: "solid 1px",
-          padding: "1rem"
+          padding: "1rem",
         }}
       >
-        {invoices.map(invoice => (
+        {invoices.map((invoice) => (
           <Link
             style={{ display: "block", margin: "1rem 0" }}
             to={`/invoices/${invoice.number}`}
@@ -20,43 +20,48 @@ export default function Invoices() {
           </Link>
         ))}
       </nav>
+      <Outlet />
     </div>
   );
 }
 
-  let invoices = [
-    {
-      name: "Santa Monica",
-      number: 1995,
-      amount: "$10,800",
-      due: "12/05/1995"
-    },
-    {
-      name: "Stankonia",
-      number: 2000,
-      amount: "$8,000",
-      due: "10/31/2000"
-    },
-    {
-      name: "Ocean Avenue",
-      number: 2003,
-      amount: "$9,500",
-      due: "07/22/2003"
-    },
-    {
-      name: "Tubthumper",
-      number: 1997,
-      amount: "$14,000",
-      due: "09/01/1997"
-    },
-    {
-      name: "Wide Open Spaces",
-      number: 1998,
-      amount: "$4,600",
-      due: "01/27/2998"
-    }
-  ];
-  
-  export function getInvoices() {
-    return invoices;
-  }
+let invoices = [
+  {
+    name: "Santa Monica",
+    number: 1995,
+    amount: "$10,800",
+    due: "12/05/1995",
+  },
+  {
+    name: "Stankonia",
+    number: 2000,
+    amount: "$8,000",
+    due: "10/31/2000",
+  },
+  {
+    name: "Ocean Avenue",
+    number: 2003,
+    amount: "$9,500",
+    due: "07/22/2003",
+  },
+  {
+    name: "Tubthumper",
+    number: 1997,
+    amount: "$14,000",
+    due: "09/01/1997",
+  },
+  {
+    name: "Wide Open Spaces",
+    number: 1998,
+    amount: "$4,600",
+    due: "01/27/2998",
+  },
+];
+
+export function getInvoices() {
+  return invoices;
+}
+
+export function getInvoiceByInvoiceNumber(invoiceId) {
+  return invoices.find((invoice) => invoice.number === invoiceId);
+}
